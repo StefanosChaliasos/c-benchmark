@@ -1,1 +1,3 @@
-main,fun
+main,f1
+f1,id
+id,fun
