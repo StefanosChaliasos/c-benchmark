@@ -3,6 +3,7 @@ import argparse
 import sys
 import os
 import csv
+import json
 import subprocess as sp
 from sys import platform
 
@@ -67,7 +68,8 @@ def run_callgrind():
     run_command(['make'])
     run_command(['valgrind', '--tool=callgrind', 
                  '--callgrind-out-file=cgraph.txt', './program'])
-    run_command(['gprof2dot', '-f', 'callgrind', '-o', 
+    run_command(['gprof2dot', '-f', 'callgrind', 
+                 '-n', '0.0', '-e', '0.0', '-o', 
                  'graph.dot', 'cgraph.txt'])
     run_command(['dot2fasten', 'program', 'graph.dot', 'callgrind.json'])
 
@@ -78,6 +80,13 @@ def parse_cscout_output():
         clear = lambda x: x.replace('program.c:', '')
         return {(clear(r[0]), clear(r[1])) for r in reader}
 
+
+def parse_callgrind_output():
+    with open('callgrind.json') as f:
+        data = json.load(f)
+        data = filter(lambda x: not x[0].startswith('//'), data)
+        clear = lambda x: x.replace('()', '')[x.rfind('/')+1:]
+        return {(clear(r[0]), clear(r[1])) for r in data}
 
 def clean():
     run_command(['make', 'clean'])
@@ -90,10 +99,11 @@ def run_tests(tool, cwd, tests):
             "parse": parse_cscout_output
         },
         "callgrind": {
-            "run": run_callgrind
+            "run": run_callgrind,
+            "parse": parse_callgrind_output
         }
     }
-    fprint("CScout Benchmark Starts ", fullscreen=True)
+    fprint(tool + " Benchmark Starts ", fullscreen=True)
     passed = 0
     total = len(tests)
     for test in sorted(tests):
