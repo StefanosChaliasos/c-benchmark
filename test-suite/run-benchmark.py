@@ -91,7 +91,7 @@ def main():
     fprint(" C Benchmark Starts ", fullscreen=True)
     passed = 0
     total = len(tests)
-    for test in sorted(tests, key=lambda x: int(x)):
+    for test in sorted(tests):
         os.chdir(os.path.join(cwd, test))
         cg = parse_cg()
         run_cscout()
