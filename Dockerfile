@@ -19,6 +19,7 @@ RUN wget https://raw.githubusercontent.com/fasten-project/debian-builder/master/
 RUN mv ./dot2fasten /usr/local/bin/
 RUN chmod +x /usr/local/bin/dot2fasten
 
-COPY ./test-suite .
+COPY ./test-suite /root/test-suite
 
 USER root
+WORKDIR /root/test-suite
