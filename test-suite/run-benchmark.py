@@ -63,6 +63,15 @@ def run_cscout():
     run_command(['cscout', '-R', 'cgraph.txt', 'make.cs'])
 
 
+def run_callgrind():
+    run_command(['make'])
+    run_command(['valgrind', '--tool=callgrind', 
+                 '--callgrind-out-file=cgraph.txt', './program'])
+    run_command(['gprof2dot', '-f', 'callgrind', '-o', 
+                 'graph.dot', 'cgraph.txt'])
+    run_command(['dot2fasten', 'program', 'graph.dot', 'callgrind.json'])
+
+
 def parse_cscout_output():
     with open('cgraph.txt') as f:
         reader = csv.reader(f, delimiter=' ')
@@ -74,36 +83,49 @@ def clean():
     run_command(['make', 'clean'])
 
 
-def main():
-    # Parse arguments
-    parser = argparse.ArgumentParser('Run C Call Graphs Benchmark')
-    parser.add_argument('-t', '--test-number', help='Specify specific test')
-    args = parser.parse_args()
-    cwd = os.getcwd()
-
-    tests = [d for d in os.listdir('.') if os.path.isdir(d)]
-    if args.test_number:
-        if args.test_number not in tests:
-            sys.exit("Test number {} does not exist".format(args.test_number))
-        tests = [args.test_number]
-
-
-    fprint(" C Benchmark Starts ", fullscreen=True)
+def run_tests(tool, cwd, tests):
+    commands = {
+        "cscout": {
+            "run": run_cscout,
+            "parse": parse_cscout_output
+        },
+        "callgrind": {
+            "run": run_callgrind
+        }
+    }
+    fprint("CScout Benchmark Starts ", fullscreen=True)
     passed = 0
     total = len(tests)
     for test in sorted(tests):
         os.chdir(os.path.join(cwd, test))
         cg = parse_cg()
-        run_cscout()
-        cscout_cg = parse_cscout_output()
+        commands[tool]['run']()
+        tool_cg = commands[tool]['parse']()
         clean()
         status = color("Failed", bcolors.RED)
-        if cg == cscout_cg:
+        if cg == tool_cg:
             status = color("Passed", bcolors.GREEN)
             passed += 1
         fprint("test_{}: {}".format(test, status))
         os.chdir(cwd)
     fprint(" {}/{} tests passed ".format(passed, total), fullscreen=True)
+
+
+def main():
+    # Parse arguments
+    parser = argparse.ArgumentParser('Run C Call Graphs Benchmark')
+    parser.add_argument('-t', '--test', help='Specify specific test')
+    args = parser.parse_args()
+    cwd = os.getcwd()
+
+    tests = [d for d in os.listdir('.') if os.path.isdir(d)]
+    if args.test:
+        if args.test not in tests:
+            sys.exit("Test {} does not exist".format(args.test))
+        tests = [args.test]
+    run_tests("cscout", cwd, tests)
+    run_tests("callgrind", cwd, tests)
+
 
 if __name__ == "__main__":
     main()
