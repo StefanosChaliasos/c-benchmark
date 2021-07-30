@@ -5,6 +5,7 @@ import os
 import csv
 import json
 import subprocess as sp
+from collections import defaultdict
 from sys import platform
 
 
@@ -91,6 +92,20 @@ def parse_callgrind_output():
 def clean():
     run_command(['make', 'clean'])
 
+def read_category():
+    with open('category') as f:
+        category = f.readline().strip()
+    return category
+
+def print_stats(stats):
+    print()
+    print("Statistics")
+    print("----------")
+    for category, results in stats.items():
+        print("{}: {} / {}".format(
+            category, results['passed'], results['passed'] + results['failed']
+        ))
+    print()
 
 def run_tests(tool, cwd, tests):
     commands = {
@@ -103,6 +118,7 @@ def run_tests(tool, cwd, tests):
             "parse": parse_callgrind_output
         }
     }
+    stats = defaultdict(lambda: {'passed': 0, 'failed': 0})
     fprint(tool + " Benchmark Starts ", fullscreen=True)
     passed = 0
     total = len(tests)
@@ -113,11 +129,16 @@ def run_tests(tool, cwd, tests):
         tool_cg = commands[tool]['parse']()
         clean()
         status = color("Failed", bcolors.RED)
+        category = read_category()
         if cg == tool_cg:
             status = color("Passed", bcolors.GREEN)
             passed += 1
+            stats[category]['passed'] += 1
+        else:
+            stats[category]['failed'] += 1
         fprint("test_{}: {}".format(test, status))
         os.chdir(cwd)
+    print_stats(stats)
     fprint(" {}/{} tests passed ".format(passed, total), fullscreen=True)
 
 
