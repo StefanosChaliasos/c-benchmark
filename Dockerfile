@@ -15,11 +15,17 @@ WORKDIR cscout
 RUN make && make install
 WORKDIR /root
 
+RUN wget https://raw.githubusercontent.com/fasten-project/c-integrate/master/c-integrate
+RUN mv ./c-integrate /usr/local/bin/
+RUN chmod +x /usr/local/bin/c-integrate
+
 RUN wget https://raw.githubusercontent.com/fasten-project/debian-builder/master/dynamic/dot2fasten
 RUN mv ./dot2fasten /usr/local/bin/
 RUN chmod +x /usr/local/bin/dot2fasten
 
 COPY ./test-suite /root/test-suite
+COPY ./convert_cscout_to_stiched /usr/local/bin/convert_cscout_to_stiched
+RUN chmod +x /usr/local/bin/convert_cscout_to_stiched
 
 USER root
 WORKDIR /root/test-suite

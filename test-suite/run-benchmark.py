@@ -68,11 +68,20 @@ def run_cscout():
 def run_callgrind():
     run_command(['make'])
     run_command(['valgrind', '--tool=callgrind', 
-                 '--callgrind-out-file=cgraph.txt', './program'])
+                 '--callgrind-out-file=callgrindgraph.txt', './program'])
     run_command(['gprof2dot', '-f', 'callgrind', 
                  '-n', '0.0', '-e', '0.0', '-o', 
-                 'graph.dot', 'cgraph.txt'])
-    run_command(['dot2fasten', 'program', 'graph.dot', 'callgrind.json'])
+                 'graph.dot', 'callgrindgraph.txt'])
+    run_command(['dot2fasten', '--only-current', 'program', 'graph.dot', 
+                 'callgrind.json', 'test'])
+
+
+def run_integrated():
+    run_cscout()
+    run_callgrind()
+    run_command(['convert_cscout_to_stiched', 'cgraph.txt', 'stitched.json'])
+    run_command(['c-integrate', 'stitched.json', 'callgrind.json', 
+                 'integrate.json'])
 
 
 def parse_cscout_output():
@@ -85,9 +94,20 @@ def parse_cscout_output():
 def parse_callgrind_output():
     with open('callgrind.json') as f:
         data = json.load(f)
-        data = filter(lambda x: not x[0].startswith('//'), data)
+        data = filter(lambda x: x[0].startswith('//test'), data)
         clear = lambda x: x.replace('()', '')[x.rfind('/')+1:]
         return {(clear(r[0]), clear(r[1])) for r in data}
+
+def parse_integrated_output():
+    with open('integrate.json') as f:
+        data = json.load(f)
+        clear = lambda x: x.replace('()', '')[x.rfind('/')+1:]
+        return {
+            (clear(data["nodes"][str(edge[0])]["URI"]), 
+             clear(data["nodes"][str(edge[1])]["URI"]))
+            for edge in data['edges']
+            if edge[2]['dynamic']
+        }
 
 def clean():
     run_command(['make', 'clean'])
@@ -116,6 +136,10 @@ def run_tests(tool, cwd, tests):
         "callgrind": {
             "run": run_callgrind,
             "parse": parse_callgrind_output
+        },
+        "integrated": {
+            "run": run_integrated,
+            "parse": parse_integrated_output
         }
     }
     stats = defaultdict(lambda: {'passed': 0, 'failed': 0})
@@ -156,6 +180,7 @@ def main():
         tests = [args.test]
     run_tests("cscout", cwd, tests)
     run_tests("callgrind", cwd, tests)
+    run_tests("integrated", cwd, tests)
 
 
 if __name__ == "__main__":
