@@ -162,9 +162,8 @@ def run_tests(tool, cwd, tests):
                 status = color("Failed: missing edges", bcolors.RED)
                 stats[category]['failed'] += 1
             else:
-                if tool!='integrated':
-                    clean()
-                status = color("Passed: Over-approximation", bcolors.WARNING)
+                status = color("Passed: ", bcolors.GREEN)
+                status += color("Over-approximation", bcolors.WARNING)
                 stats[category]['passed'] += 1
                 stats[category]['over-approximation'] += 1
                 passed += 1
