@@ -147,7 +147,7 @@ def run_tests(tool, cwd, tests):
     passed = 0
     over = 0
     total = len(tests)
-    for test in sorted(tests):
+    for test in sorted(tests, key=lambda x: int(x.split('.')[0])):
         os.chdir(os.path.join(cwd, test))
         cg = parse_cg()
         commands[tool]['run']()
