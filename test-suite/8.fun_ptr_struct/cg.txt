@@ -1,0 +1,3 @@
+main,my_vsnprintf
+my_vsnprintf,my_vfprintf
+my_vfprintf,my_sn_write

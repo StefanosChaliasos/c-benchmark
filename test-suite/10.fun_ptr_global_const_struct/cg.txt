@@ -1,0 +1,2 @@
+main,my_vfprintf
+my_vfprintf,my_sn_write

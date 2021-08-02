@@ -1,0 +1,4 @@
+main,set
+main,real_fun
+real_fun,f
+real_fun,g
