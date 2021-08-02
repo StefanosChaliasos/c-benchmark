@@ -42,10 +42,10 @@ def create_uri(function):
 def get_node_uri(node, nodes_lookup, counter):
     new_counter = counter
     if node in nodes_lookup:
-        n = nodes_lookup[node]
+        n, counter = nodes_lookup[node]
     else:
         n = create_uri(node)
-        nodes_lookup[node] = n
+        nodes_lookup[node] = (n, counter)
         new_counter = counter + 1
     return n, counter, new_counter
 
