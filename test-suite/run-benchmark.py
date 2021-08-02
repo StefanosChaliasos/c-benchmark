@@ -106,7 +106,6 @@ def parse_integrated_output():
             (clear(data["nodes"][str(edge[0])]["URI"]), 
              clear(data["nodes"][str(edge[1])]["URI"]))
             for edge in data['edges']
-            if edge[2]['dynamic']
         }
 
 def clean():
@@ -142,28 +141,40 @@ def run_tests(tool, cwd, tests):
             "parse": parse_integrated_output
         }
     }
-    stats = defaultdict(lambda: {'passed': 0, 'failed': 0})
+    stats = defaultdict(lambda: {'passed': 0, 'failed': 0, 
+                                 'over-approximation': 0})
     fprint(tool + " Benchmark Starts ", fullscreen=True)
     passed = 0
+    over = 0
     total = len(tests)
     for test in sorted(tests):
         os.chdir(os.path.join(cwd, test))
         cg = parse_cg()
         commands[tool]['run']()
         tool_cg = commands[tool]['parse']()
-        clean()
-        status = color("Failed", bcolors.RED)
         category = read_category()
         if cg == tool_cg:
             status = color("Passed", bcolors.GREEN)
             passed += 1
             stats[category]['passed'] += 1
         else:
-            stats[category]['failed'] += 1
+            if cg - tool_cg:
+                status = color("Failed: missing edges", bcolors.RED)
+                stats[category]['failed'] += 1
+            else:
+                if tool!='integrated':
+                    clean()
+                status = color("Passed: Over-approximation", bcolors.WARNING)
+                stats[category]['passed'] += 1
+                stats[category]['over-approximation'] += 1
+                passed += 1
+                over += 1
+        clean()
         fprint("test_{}: {}".format(test, status))
         os.chdir(cwd)
     print_stats(stats)
-    fprint(" {}/{} tests passed ".format(passed, total), fullscreen=True)
+    fprint(" {} ({}) / {} tests passed ".format(
+        passed, over, total), fullscreen=True)
 
 
 def main():
