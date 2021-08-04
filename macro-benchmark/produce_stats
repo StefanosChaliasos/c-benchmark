@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+# Copyright (c) 2018-2020 FASTEN.
+#
+# This file is part of FASTEN
+# (see https://www.fasten-project.eu/).
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+import os
+import json
+
+
+def main():
+    packages = [x[0] for x in os.walk('.') if x[0] != '.']
+    table = [['Package', 'Total edges', 'Only static', 'Only dynamic', 
+              'Static and Dynamic']]
+    for p in packages:
+        p = p.replace('./', '')
+        integrated = os.path.join(p, 'integrated.json')
+        if not os.path.exists(integrated):
+            print("{} does not exist".format(integrated))
+            continue
+        with open(integrated) as f:
+            data = json.load(f)
+        total = 0
+        static = 0
+        dynamic = 0
+        both = 0
+        for edge in data['edges']:
+            uri = data['nodes'][str(edge[0])]['URI']
+            temp = uri[uri.find('//')+2:]
+            temp = temp[:temp.find('/')]
+            product = temp[:temp.find('$')] if '$' in temp else temp
+            if product != p:
+                continue
+            total += 1
+            metadata = edge[2]
+            if metadata["static"] and metadata["dynamic"]:
+                both += 1
+            elif metadata["static"]:
+                static += 1
+            elif metadata["dynamic"]:
+                dynamic += 1
+            else:
+                print("ERROR")
+        table.append([p, total, static, dynamic, both])
+
+        row_format = "{:<20}" + "{:>15}" * 3 + "{:>20}"
+        print(row_format.format(*table[0]))
+        print((20 + 15*3 + 20)*'-')
+        for r in table[1:]:
+            print(row_format.format(*r))
+
+
+if __name__ == "__main__":
+    main()
