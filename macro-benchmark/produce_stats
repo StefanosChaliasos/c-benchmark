@@ -60,11 +60,11 @@ def main():
                 print("ERROR")
         table.append([p, total, static, dynamic, both])
 
-        row_format = "{:<20}" + "{:>15}" * 3 + "{:>20}"
-        print(row_format.format(*table[0]))
-        print((20 + 15*3 + 20)*'-')
-        for r in table[1:]:
-            print(row_format.format(*r))
+    row_format = "{:<20}" + "{:>15}" * 3 + "{:>20}"
+    print(row_format.format(*table[0]))
+    print((20 + 15*3 + 20)*'-')
+    for r in table[1:]:
+        print(row_format.format(*r))
 
 
 if __name__ == "__main__":
