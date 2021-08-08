@@ -25,6 +25,9 @@ import os
 import json
 
 
+def merge(data):
+    return data
+
 def main():
     packages = [x[0] for x in os.walk('.') if x[0] != '.']
     table = [['Package', 'Total edges', 'Only static', 'Only dynamic', 
@@ -41,6 +44,7 @@ def main():
         static = 0
         dynamic = 0
         both = 0
+        data = merge(data)
         for edge in data['edges']:
             uri = data['nodes'][str(edge[0])]['URI']
             temp = uri[uri.find('//')+2:]

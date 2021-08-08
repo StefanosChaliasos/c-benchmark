@@ -1,0 +1,718 @@
+{
+    "edges": [
+        [
+            0,
+            1
+        ],
+        [
+            2,
+            1
+        ],
+        [
+            3,
+            4
+        ],
+        [
+            5,
+            6
+        ],
+        [
+            5,
+            1
+        ],
+        [
+            5,
+            7
+        ],
+        [
+            5,
+            5
+        ],
+        [
+            8,
+            9
+        ],
+        [
+            8,
+            10
+        ],
+        [
+            8,
+            11
+        ],
+        [
+            8,
+            1
+        ],
+        [
+            8,
+            7
+        ],
+        [
+            12,
+            8
+        ],
+        [
+            13,
+            8
+        ],
+        [
+            14,
+            14
+        ],
+        [
+            15,
+            16
+        ],
+        [
+            15,
+            17
+        ],
+        [
+            15,
+            7
+        ],
+        [
+            15,
+            18
+        ],
+        [
+            19,
+            1
+        ],
+        [
+            19,
+            15
+        ],
+        [
+            20,
+            16
+        ],
+        [
+            20,
+            17
+        ],
+        [
+            21,
+            6
+        ],
+        [
+            21,
+            1
+        ],
+        [
+            21,
+            7
+        ],
+        [
+            21,
+            22
+        ],
+        [
+            21,
+            19
+        ],
+        [
+            21,
+            23
+        ],
+        [
+            21,
+            24
+        ],
+        [
+            21,
+            20
+        ],
+        [
+            21,
+            12
+        ],
+        [
+            21,
+            13
+        ],
+        [
+            21,
+            15
+        ],
+        [
+            21,
+            21
+        ],
+        [
+            25,
+            6
+        ],
+        [
+            25,
+            0
+        ],
+        [
+            26,
+            16
+        ],
+        [
+            26,
+            17
+        ],
+        [
+            27,
+            6
+        ],
+        [
+            27,
+            1
+        ],
+        [
+            28,
+            6
+        ],
+        [
+            29,
+            6
+        ],
+        [
+            30,
+            6
+        ],
+        [
+            31,
+            6
+        ],
+        [
+            31,
+            32
+        ],
+        [
+            31,
+            1
+        ],
+        [
+            31,
+            2
+        ],
+        [
+            31,
+            3
+        ],
+        [
+            31,
+            5
+        ],
+        [
+            31,
+            19
+        ],
+        [
+            31,
+            14
+        ],
+        [
+            31,
+            21
+        ],
+        [
+            31,
+            33
+        ],
+        [
+            31,
+            25
+        ],
+        [
+            31,
+            29
+        ],
+        [
+            31,
+            34
+        ],
+        [
+            31,
+            27
+        ],
+        [
+            31,
+            35
+        ],
+        [
+            31,
+            30
+        ],
+        [
+            31,
+            36
+        ],
+        [
+            31,
+            37
+        ],
+        [
+            10,
+            38
+        ],
+        [
+            11,
+            10
+        ],
+        [
+            38,
+            39
+        ],
+        [
+            38,
+            39
+        ],
+        [
+            38,
+            39
+        ],
+        [
+            38,
+            39
+        ],
+        [
+            40,
+            41
+        ],
+        [
+            39,
+            40
+        ],
+        [
+            42,
+            41
+        ],
+        [
+            39,
+            42
+        ],
+        [
+            43,
+            41
+        ],
+        [
+            39,
+            43
+        ],
+        [
+            44,
+            41
+        ],
+        [
+            39,
+            44
+        ],
+        [
+            0,
+            45
+        ],
+        [
+            0,
+            46
+        ],
+        [
+            0,
+            47
+        ],
+        [
+            7,
+            48
+        ],
+        [
+            16,
+            48
+        ],
+        [
+            17,
+            48
+        ],
+        [
+            18,
+            48
+        ],
+        [
+            2,
+            45
+        ],
+        [
+            2,
+            47
+        ],
+        [
+            4,
+            49
+        ],
+        [
+            5,
+            45
+        ],
+        [
+            5,
+            49
+        ],
+        [
+            5,
+            50
+        ],
+        [
+            5,
+            51
+        ],
+        [
+            5,
+            47
+        ],
+        [
+            5,
+            48
+        ],
+        [
+            5,
+            52
+        ],
+        [
+            5,
+            53
+        ],
+        [
+            5,
+            54
+        ],
+        [
+            5,
+            55
+        ],
+        [
+            8,
+            56
+        ],
+        [
+            8,
+            57
+        ],
+        [
+            8,
+            58
+        ],
+        [
+            22,
+            48
+        ],
+        [
+            34,
+            58
+        ],
+        [
+            34,
+            59
+        ],
+        [
+            26,
+            60
+        ],
+        [
+            27,
+            61
+        ],
+        [
+            27,
+            62
+        ],
+        [
+            27,
+            47
+        ],
+        [
+            27,
+            63
+        ],
+        [
+            36,
+            49
+        ],
+        [
+            31,
+            56
+        ],
+        [
+            31,
+            57
+        ],
+        [
+            31,
+            63
+        ],
+        [
+            10,
+            64
+        ],
+        [
+            38,
+            64
+        ]
+    ],
+    "nodes": {
+        "0": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/escapefilename()",
+            "metadata": {}
+        },
+        "1": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/errormsg()",
+            "metadata": {}
+        },
+        "2": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/cloneargs()",
+            "metadata": {}
+        },
+        "3": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/nonoptafter()",
+            "metadata": {}
+        },
+        "4": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/findarg()",
+            "metadata": {}
+        },
+        "5": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/grokdir()",
+            "metadata": {}
+        },
+        "6": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;./fdupes.c;ISFLAG()",
+            "metadata": {}
+        },
+        "7": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/filesize()",
+            "metadata": {}
+        },
+        "8": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/getcrcsignatureuntil()",
+            "metadata": {}
+        },
+        "9": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/md5_init()",
+            "metadata": {}
+        },
+        "10": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/md5_append()",
+            "metadata": {}
+        },
+        "11": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/md5_finish()",
+            "metadata": {}
+        },
+        "12": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/getcrcsignature()",
+            "metadata": {}
+        },
+        "13": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/getcrcpartialsignature()",
+            "metadata": {}
+        },
+        "14": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/purgetree()",
+            "metadata": {}
+        },
+        "15": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/getfilestats()",
+            "metadata": {}
+        },
+        "16": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/getdevice()",
+            "metadata": {}
+        },
+        "17": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/getinode()",
+            "metadata": {}
+        },
+        "18": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/getmtime()",
+            "metadata": {}
+        },
+        "19": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/registerfile()",
+            "metadata": {}
+        },
+        "20": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/is_hardlink()",
+            "metadata": {}
+        },
+        "21": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/checkmatch()",
+            "metadata": {}
+        },
+        "22": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/same_permissions()",
+            "metadata": {}
+        },
+        "23": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/md5copy()",
+            "metadata": {}
+        },
+        "24": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/md5cmp()",
+            "metadata": {}
+        },
+        "25": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/printmatches()",
+            "metadata": {}
+        },
+        "26": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/relink()",
+            "metadata": {}
+        },
+        "27": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/deletefiles()",
+            "metadata": {}
+        },
+        "28": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/sort_pairs_by_arrival()",
+            "metadata": {}
+        },
+        "29": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/sort_pairs_by_mtime()",
+            "metadata": {}
+        },
+        "30": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/deletesuccessor()",
+            "metadata": {}
+        },
+        "31": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/main()",
+            "metadata": {}
+        },
+        "32": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;./fdupes.c;SETFLAG()",
+            "metadata": {}
+        },
+        "33": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/summarizematches()",
+            "metadata": {}
+        },
+        "34": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/confirmmatch()",
+            "metadata": {}
+        },
+        "35": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/registerpair()",
+            "metadata": {}
+        },
+        "36": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/sort_pairs_by_filename()",
+            "metadata": {}
+        },
+        "37": {
+            "URI": "fasten://fdupes$1:1.6.1-2/fdupes;C/help_text()",
+            "metadata": {}
+        },
+        "38": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;md5/md5.c;md5_process()",
+            "metadata": {}
+        },
+        "39": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;md5/md5.c;SET()",
+            "metadata": {}
+        },
+        "40": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;md5/md5.c;F()",
+            "metadata": {}
+        },
+        "41": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;md5/md5.c;ROTATE_LEFT()",
+            "metadata": {}
+        },
+        "42": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;md5/md5.c;G()",
+            "metadata": {}
+        },
+        "43": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;md5/md5.c;H()",
+            "metadata": {}
+        },
+        "44": {
+            "URI": "fasten://fdupes$1:1.6.1-2/;md5/md5.c;I()",
+            "metadata": {}
+        },
+        "45": {
+            "URI": "fasten://libc6/libc.so;C/strcpy()",
+            "metadata": {}
+        },
+        "46": {
+            "URI": "fasten://libc6/libc.so;C/strchr()",
+            "metadata": {}
+        },
+        "47": {
+            "URI": "fasten://libc6/libc.so;C/strlen()",
+            "metadata": {}
+        },
+        "48": {
+            "URI": "fasten:///;C/stat()",
+            "metadata": {}
+        },
+        "49": {
+            "URI": "fasten://libc6/libc.so;C/strcmp()",
+            "metadata": {}
+        },
+        "50": {
+            "URI": "fasten://libc6/libc.so;C/strcat()",
+            "metadata": {}
+        },
+        "51": {
+            "URI": "fasten://libc6/libc.so;C/strdup()",
+            "metadata": {}
+        },
+        "52": {
+            "URI": "fasten:///;C/lstat()",
+            "metadata": {}
+        },
+        "53": {
+            "URI": "fasten://libc6/libc.so;C/opendir()",
+            "metadata": {}
+        },
+        "54": {
+            "URI": "fasten://libc6/libc.so;C/closedir()",
+            "metadata": {}
+        },
+        "55": {
+            "URI": "fasten://libc6/libc.so;C/readdir()",
+            "metadata": {}
+        },
+        "56": {
+            "URI": "fasten://libc6/libc.so;C/fclose()",
+            "metadata": {}
+        },
+        "57": {
+            "URI": "fasten://libc6/libc.so;C/fopen()",
+            "metadata": {}
+        },
+        "58": {
+            "URI": "fasten://libc6/libc.so;C/fread()",
+            "metadata": {}
+        },
+        "59": {
+            "URI": "fasten://libc6/libc.so;C/memcmp()",
+            "metadata": {}
+        },
+        "60": {
+            "URI": "fasten://libc6/libc.so;C/link()",
+            "metadata": {}
+        },
+        "61": {
+            "URI": "fasten://libc6/libc.so;C/fflush()",
+            "metadata": {}
+        },
+        "62": {
+            "URI": "fasten://libc6/libc.so;C/fgets()",
+            "metadata": {}
+        },
+        "63": {
+            "URI": "fasten://libc6/libc.so;C/strcasecmp()",
+            "metadata": {}
+        },
+        "64": {
+            "URI": "fasten://libc6/libc.so;C/memcpy()",
+            "metadata": {}
+        }
+    }
+}
